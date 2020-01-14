@@ -1,0 +1,44 @@
+.LabelMenu {
+  padding: 0;
+  margin-left: 12px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  color: #6879bb;
+}
+.DropDown {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+.DropDownChild {
+  border-radius: 15px;
+  position: absolute;
+  display: none;
+  background-color: rgba(255, 255, 255, 0);
+  min-width: 200px;
+  margin-left: 8px;
+  padding-top: 20px;
+}
+.DropDownChild a {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  color: #6879bb;
+  border: 1px solid white;
+  border-radius: 10px;
+  background: whitesmoke;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 2px;
+  text-align: center;
+}
+.DropDownChild a:hover {
+  border: 2px solid #6879bb;
+}
+.DropDown:hover .DropDownChild {
+  display: block;
+}

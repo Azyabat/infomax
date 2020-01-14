@@ -1,0 +1,16 @@
+.RowinAuthBody {
+  margin-top: 32px;
+}
+.RowInWorkPlace {
+  margin-top: 32px;
+  height: 80%;
+  position: relative;
+}
+.MainContainer {
+  width: 32vw;
+  height: 80vh;
+  background: #ffffff;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+

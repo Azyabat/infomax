@@ -1,0 +1,45 @@
+.insertContainer {
+    height: 100%;
+  }
+  .insertContainer input {
+    margin: 0 auto;
+    width: 328px;
+    height: 36px;
+  }
+  .insertContainer input:first-child {
+    margin-top: 34px;
+    margin-bottom: 14px;
+  }
+  
+  button {
+    margin: 0 auto;
+    margin-top: 26px;
+    background: #ffce0c;
+    border-radius: 4px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    width: 328px;
+    height: 36px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #333333;
+  }
+  #ErrorBlock {
+    margin-top: 60px;
+    background-color: #ffe9db;
+    height: 96px;
+  }
+  #ErrorBlock img {
+    margin-left: 48px;
+    margin-right: 24px;
+  }
+  #ErrorBlock p {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #333333;
+  }
