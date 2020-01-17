@@ -3,10 +3,9 @@ import "../Css/AuthBody.css";
 import NavBar from "./NavBar";
 import logo from "../Img/proceset.png";
 import { Container, Row, Col } from "react-grid-system";
-import LoginBody from './LoginBody';
-import RegistrationBody from './RegistrationBody';
-import {Route} from 'react-router-dom';
-
+import LoginBody from "./LoginBody";
+import RegistrationBody from "./RegistrationBody";
+import { Route } from "react-router-dom";
 
 function AuthBody() {
   return (
@@ -24,8 +23,8 @@ function AuthBody() {
       <Row align={"start"} className="RowInWorkPlace">
         <Col align={"center"}>
           <div className="MainContainer">
-          <Route exact path='/auth' component={LoginBody}/>
-          <Route exact path='/registration' component={RegistrationBody}/>
+            <Route exact path="/auth" render={() => <LoginBody />} />
+            <Route exact path="/registration" component={RegistrationBody} />
           </div>
         </Col>
       </Row>

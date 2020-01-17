@@ -6,12 +6,12 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
-    <div>
+    <div >
       <Row align={"center"} style={{ height: "60px", background: "#FFFFFF", 
             boxShadow: '0px 1px 10px rgba(104, 121, 187, 0.1)' }}>
         <div className="DropDown">
           <img src={menuicon} alt={"logo"} style={{ marginLeft: "8px" }} />
-          <div class="DropDownChild">
+          <div className="DropDownChild">
             <NavLink to="/auth">Авторизация</NavLink>
             <NavLink to="/registration">Регистрация</NavLink>
             <NavLink to="/">Личный кабинет</NavLink>

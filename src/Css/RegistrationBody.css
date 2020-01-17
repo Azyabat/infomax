@@ -12,17 +12,17 @@
 
   color: #404064;
 }
-.insertContainer input{
-    margin-bottom: 12px;
-    background: #FFFFFF;
-border: 1px solid #D6DCE9;
-box-sizing: border-box;
-border-radius: 4px;
-font-family: Open Sans;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 19px;
-color: #CCCCCC;
-padding: 6px 36px 6px 12px;
+.insertContainer input {
+  margin-bottom: 12px;
+  background: #ffffff;
+  border: 1px solid #d6dce9;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #cccccc;
+  padding: 6px 36px 6px 12px;
 }
