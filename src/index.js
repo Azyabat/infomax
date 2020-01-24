@@ -8,17 +8,28 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./Reducers";
 
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+
+const localGraphQL = "http://localhost:4000/graphql";
+
+const client = new ApolloClient({
+  uri: localGraphQL
+});
+
 const store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>,
+  <ApolloProvider client={client}>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </ApolloProvider>,
   document.getElementById("root")
 );
 

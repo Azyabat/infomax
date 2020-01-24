@@ -56,7 +56,7 @@ function LoginBody(props) {
       </Row>
       {props.store.Errors.LoginFormErrors[0] && (
         <Row fluid="true" id="ErrorBlock" align={"center"}>
-          <img src={alert} />
+          <img src={alert} alt="Alert"/>
           <p>Неправильная почта или пароль</p>
         </Row>
       )}
