@@ -4,15 +4,32 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import "../Css/RegistrationBody.css";
 import alert from "../Img/alert.png";
+import { gql } from 'apollo-boost';
+import { useMutation } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/react-hooks';
 
-import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
+const Users = gql`
+  {
+    users {
+      id
+      username
+      password
+      email
+    }
+  }
+`;
+
 
 function RegistrationBody(props) {
-  const goMutation = () =>{
-    
+  const {data} = useQuery(Users);
+  const ADD_USER = gql`
+  mutation AddUser( $id: ID!, $username: String!, $password: String!, $email: String!){
+    createUser(id: $id, username: $username, password: $password, email: $email){
+      id
+    }
   }
-
+`;
+const [AddUser] = useMutation(ADD_USER);
   const FormSubmit = e => {
     var FormRegistration = props.store.form.Registration.values;
     e.preventDefault();
@@ -38,74 +55,76 @@ function RegistrationBody(props) {
     ) {
       props.Add_Error("Некорректное имя пользователя!");
     }
-    if (props.Add_Error === "") {
+    if (props.store.Errors.RegistrationFormErrors.length == 0) {
+      
+      AddUser({variables:{id: data.users.length + 1, username: FormRegistration.Username, password: FormRegistration.Password, email: FormRegistration.Email}});
+    
     }
   };
   return (
-      <Container fluid={true} className="insertContainer">
-        <Row align={"center"}>
-          <h2>Регистрация нового пользователя</h2>
-          <form onSubmit={FormSubmit}>
-            <Field
-              component="input"
-              required
-              name="Username"
-              type="text"
-              placeholder="Имя пользователя"
-              style={
-                props.store.Errors.RegistrationFormErrors[0] && {
-                  border: "1px solid red"
-                }
+    <Container fluid={true} className="insertContainer">
+      <Row align={"center"}>
+        <h2>Регистрация нового пользователя</h2>
+        <form onSubmit={FormSubmit}>
+          <Field
+            component="input"
+            required
+            name="Username"
+            type="text"
+            placeholder="Имя пользователя"
+            style={
+              props.store.Errors.RegistrationFormErrors[0] && {
+                border: "1px solid red"
               }
-            />
-            <Field
-              component="input"
-              required
-              name="Email"
-              type="text"
-              placeholder="Электронная почта"
-              style={
-                props.store.Errors.RegistrationFormErrors[0] && {
-                  border: "1px solid red"
-                }
+            }
+          />
+          <Field
+            component="input"
+            required
+            name="Email"
+            type="text"
+            placeholder="Электронная почта"
+            style={
+              props.store.Errors.RegistrationFormErrors[0] && {
+                border: "1px solid red"
               }
-            />
-            <Field
-              component="input"
-              required
-              name="Password"
-              type="password"
-              placeholder="Введите пароль"
-              style={
-                props.store.Errors.RegistrationFormErrors[0] && {
-                  border: "1px solid red"
-                }
+            }
+          />
+          <Field
+            component="input"
+            required
+            name="Password"
+            type="password"
+            placeholder="Введите пароль"
+            style={
+              props.store.Errors.RegistrationFormErrors[0] && {
+                border: "1px solid red"
               }
-            />
-            <Field
-              component="input"
-              required
-              name="Second_Password"
-              type="password"
-              placeholder="Повторите пароль"
-              style={
-                props.store.Errors.RegistrationFormErrors[0] && {
-                  border: "1px solid red"
-                }
+            }
+          />
+          <Field
+            component="input"
+            required
+            name="Second_Password"
+            type="password"
+            placeholder="Повторите пароль"
+            style={
+              props.store.Errors.RegistrationFormErrors[0] && {
+                border: "1px solid red"
               }
-            />
-            <button type="submit"> Применить и войти </button>
-          </form>
+            }
+          />
+          <button type="submit"> Применить и войти </button>
+        </form>
+      </Row>
+      {props.store.Errors.RegistrationFormErrors[0] && (
+        <Row fluid="true" id="ErrorBlock" align={"center"}>
+          <img src={alert} />
+          <p>{props.store.Errors.RegistrationFormErrors}</p>
         </Row>
-        {props.store.Errors.RegistrationFormErrors[0] && (
-          <Row fluid="true" id="ErrorBlock" align={"center"}>
-            <img src={alert} />
-            <p>{props.store.Errors.RegistrationFormErrors}</p>
-          </Row>
-        )}
-        
-      </Container>
+      )}
       
+    </Container>
   );
 }
 
