@@ -4,16 +4,39 @@ import alert from "../Img/alert.png";
 import "../Css/LoginBody.css";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
+import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
+
+const Users = gql`
+  {
+    users {
+      username
+      password
+    }
+  }
+`;
 
 function LoginBody(props) {
+  const UsersList = useQuery(Users);
   const FormSubmit = e => {
+    const SelectedUser = UsersList.data.users.find(
+      user => user.username === props.store.form.Login.values.Username
+    );
+
     e.preventDefault();
-    if (!props.store.form.Login.values) {
+    if (!SelectedUser) {
       props.AddError("Error");
-    } else {
-      props.AddError("");
+    }
+    if (SelectedUser) {
+      if (SelectedUser.password === props.store.form.Login.values.Password) {
+        localStorage.setItem("user", SelectedUser.username);
+        window.location.href = "./";
+      } else {
+        props.AddError("Error");
+      }
     }
   };
+
   return (
     <Container fluid={true} className="insertContainer">
       <Row align={"center"}>
@@ -26,7 +49,7 @@ function LoginBody(props) {
             name="Username"
             required
             style={
-              props.store.Errors.RegistrationFormErrors[0] && {
+              props.store.Errors.LoginFormErrors[0] && {
                 border: "1px solid red"
               }
             }
@@ -38,7 +61,7 @@ function LoginBody(props) {
             name="Password"
             required
             style={
-              props.store.Errors.RegistrationFormErrors[0] && {
+              props.store.Errors.LoginFormErrors[0] && {
                 border: "1px solid red"
               }
             }
@@ -56,8 +79,8 @@ function LoginBody(props) {
       </Row>
       {props.store.Errors.LoginFormErrors[0] && (
         <Row fluid="true" id="ErrorBlock" align={"center"}>
-          <img src={alert} alt="Alert"/>
-          <p>Неправильная почта или пароль</p>
+          <img src={alert} alt="Alert" />
+          <p>Неправильный логин или пароль</p>
         </Row>
       )}
     </Container>

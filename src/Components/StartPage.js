@@ -5,6 +5,7 @@ import { Container, Row, Col } from "react-grid-system";
 import NavBar from "./NavBar";
 
 function StartPage() {
+  sessionStorage.removeItem("user");
   return (
     <Container fluid={true} className="MainDivStartPage">
       <NavBar />

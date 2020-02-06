@@ -1,5 +1,5 @@
 export default function AddError(
-  state = { LoginFormErrors: [], RegistrationFormErrors: [] },
+  state = { LoginFormErrors: [], RegistrationFormErrors: "" },
   action
 ) {
   switch (action.type) {

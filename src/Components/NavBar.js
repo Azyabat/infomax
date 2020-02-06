@@ -5,6 +5,7 @@ import "../Css/NavBar.css";
 import { NavLink } from "react-router-dom";
 
 function NavBar() {
+
   return (
     <div >
       <Row align={"center"} style={{ height: "60px", background: "#FFFFFF", 
@@ -12,9 +13,10 @@ function NavBar() {
         <div className="DropDown">
           <img src={menuicon} alt={"logo"} style={{ marginLeft: "8px" }} />
           <div className="DropDownChild">
-            <NavLink to="/auth">Авторизация</NavLink>
-            <NavLink to="/registration">Регистрация</NavLink>
-            <NavLink to="/">Личный кабинет</NavLink>
+            {!localStorage.getItem("user") && <NavLink to="/auth">Авторизация</NavLink>}
+            {!localStorage.getItem("user") && <NavLink to="/registration">Регистрация</NavLink>}
+            {localStorage.getItem("user") && <NavLink to="/">Личный кабинет</NavLink>}
+            {localStorage.getItem("user") && <a href = "" onClick={()=>{localStorage.removeItem("user");}}>Выход</a>}
           </div>
         </div>
         <p className="LabelMenu">Меню</p>

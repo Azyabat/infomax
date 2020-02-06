@@ -4,35 +4,46 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import "../Css/RegistrationBody.css";
 import alert from "../Img/alert.png";
-import { gql } from 'apollo-boost';
-import { useMutation } from '@apollo/react-hooks';
-import { useQuery } from '@apollo/react-hooks';
+import { gql } from "apollo-boost";
+import { useMutation } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 
 const Users = gql`
   {
     users {
-      id
       username
-      password
-      email
     }
   }
 `;
-
 
 function RegistrationBody(props) {
-  const {data} = useQuery(Users);
+  const UsersList = useQuery(Users);
   const ADD_USER = gql`
-  mutation AddUser( $id: ID!, $username: String!, $password: String!, $email: String!){
-    createUser(id: $id, username: $username, password: $password, email: $email){
-      id
+    mutation AddUser(
+      $id: ID!
+      $username: String!
+      $password: String!
+      $email: String!
+    ) {
+      createUser(
+        id: $id
+        username: $username
+        password: $password
+        email: $email
+      ) {
+        id
+      }
     }
-  }
-`;
-const [AddUser] = useMutation(ADD_USER);
+  `;
+
+  const [AddUser] = useMutation(ADD_USER);
+
   const FormSubmit = e => {
-    var FormRegistration = props.store.form.Registration.values;
     e.preventDefault();
+    var FormRegistration = props.store.form.Registration.values;
+    const UniqueUsername = UsersList.data.users.find(
+      user => user.username === FormRegistration.Username
+    );
     if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(FormRegistration.Email)
     ) {
@@ -55,10 +66,26 @@ const [AddUser] = useMutation(ADD_USER);
     ) {
       props.Add_Error("Некорректное имя пользователя!");
     }
-    if (props.store.Errors.RegistrationFormErrors.length == 0) {
-      
-      AddUser({variables:{id: data.users.length + 1, username: FormRegistration.Username, password: FormRegistration.Password, email: FormRegistration.Email}});
-    
+    if (
+      !UniqueUsername &&
+      FormRegistration.Password.length > 5 &&
+      FormRegistration.Password.length < 15 &&
+      FormRegistration.Username.length > 5 &&
+      FormRegistration.Username.length < 15 &&
+      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(FormRegistration.Email)
+    ) {
+      AddUser({
+        variables: {
+          id: UsersList.data.users.length + 1,
+          username: FormRegistration.Username,
+          password: FormRegistration.Password,
+          email: FormRegistration.Email
+        }
+      });
+      window.location.href = "./";
+    }
+    if (UniqueUsername) {
+      props.Add_Error("Имя пользователя уже занято!");
     }
   };
   return (
@@ -123,7 +150,6 @@ const [AddUser] = useMutation(ADD_USER);
           <p>{props.store.Errors.RegistrationFormErrors}</p>
         </Row>
       )}
-      
     </Container>
   );
 }
