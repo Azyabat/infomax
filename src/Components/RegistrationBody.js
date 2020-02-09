@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row } from "react-grid-system";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import "../Css/RegistrationBody.css";
+import StylesData from "../Css/RegistrationBody.module.css";
 import alert from "../Img/alert.png";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
@@ -89,9 +89,9 @@ function RegistrationBody(props) {
     }
   };
   return (
-    <Container fluid={true} className="insertContainer">
+    <Container fluid={true} className={StylesData.insertContainer}>
       <Row align={"center"}>
-        <h2>Регистрация нового пользователя</h2>
+        <h2 className={StylesData.Caption}>Регистрация нового пользователя</h2>
         <form onSubmit={FormSubmit}>
           <Field
             component="input"
@@ -141,11 +141,11 @@ function RegistrationBody(props) {
               }
             }
           />
-          <button type="submit"> Применить и войти </button>
+          <button type="submit" className={StylesData.BtnSubmit}> Применить и войти </button>
         </form>
       </Row>
       {props.store.Errors.RegistrationFormErrors[0] && (
-        <Row fluid="true" id="ErrorBlock" align={"center"}>
+        <Row fluid="true" id="ErrorBlock" className={StylesData.ErrorBlock} align={"center"}>
           <img src={alert} />
           <p>{props.store.Errors.RegistrationFormErrors}</p>
         </Row>

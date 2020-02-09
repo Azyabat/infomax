@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row } from "react-grid-system";
 import alert from "../Img/alert.png";
-import "../Css/LoginBody.css";
+import StylesData from "../Css/LoginBody.module.css";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { useQuery } from "@apollo/react-hooks";
@@ -38,9 +38,9 @@ function LoginBody(props) {
   };
 
   return (
-    <Container fluid={true} className="insertContainer">
+    <Container fluid={true} className={StylesData.insertContainer}>
       <Row align={"center"}>
-        <h2>Вход</h2>
+        <h2 className={StylesData.Caption}>Вход</h2>
         <form onSubmit={FormSubmit}>
           <Field
             component="input"
@@ -56,7 +56,7 @@ function LoginBody(props) {
           />
           <Field
             component="input"
-            type="text"
+            type="password"
             placeholder="Пароль"
             name="Password"
             required
@@ -66,7 +66,7 @@ function LoginBody(props) {
               }
             }
           />
-          <button
+          <button className={StylesData.BtnSubmit}
             type="submit"
             onClick={() => {
               props.AddLogin();
@@ -78,7 +78,12 @@ function LoginBody(props) {
         </form>
       </Row>
       {props.store.Errors.LoginFormErrors[0] && (
-        <Row fluid="true" id="ErrorBlock" align={"center"}>
+        <Row
+          fluid="true"
+          id="ErrorBlock"
+          className={StylesData.ErrorBlock}
+          align={"center"}
+        >
           <img src={alert} alt="Alert" />
           <p>Неправильный логин или пароль</p>
         </Row>

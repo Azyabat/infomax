@@ -10,8 +10,7 @@
     margin-top: 34px;
     margin-bottom: 14px;
   }
-  
-  button {
+  .BtnSubmit {
     margin: 0 auto;
     margin-top: 26px;
     background: #ffce0c;
@@ -27,19 +26,35 @@
     line-height: 16px;
     color: #333333;
   }
-  #ErrorBlock {
+  .ErrorBlock {
     margin-top: 60px;
     background-color: #ffe9db;
     height: 96px;
   }
-  #ErrorBlock img {
+  .ErrorBlock img {
     margin-left: 48px;
     margin-right: 24px;
   }
-  #ErrorBlock p {
+  .ErrorBlock p {
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     color: #333333;
+  }
+  .Caption{
+    display: block;
+    width: 328px;
+    margin: 0 auto;
+    margin-top: 36px;
+    margin-bottom: 22px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    color: #404064;
+  }
+  form{
+    margin: 0 auto;
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import "../Css/AuthBody.css";
+import StylesData from "../Css/AuthBody.module.css";
 import NavBar from "./NavBar";
 import logo from "../Img/proceset.png";
 import { Container, Row, Col } from "react-grid-system";
@@ -9,9 +9,9 @@ import { Route } from "react-router-dom";
 
 function AuthBody() {
   return (
-    <Container fluid={true} className="MainDivStartPage">
+    <Container fluid={true} className={StylesData.MainDivStartPage}>
       <NavBar />
-      <Row align={"center"} className="RowinAuthBody">
+      <Row align={"center"} className={StylesData.RowinAuthBody}>
         <Col>
           <img
             src={logo}
@@ -20,9 +20,9 @@ function AuthBody() {
           />
         </Col>
       </Row>
-      <Row align={"start"} className="RowInWorkPlace">
+      <Row align={"start"} className={StylesData.RowInWorkPlace}>
         <Col align={"center"}>
-          <div className="MainContainer">
+          <div className={StylesData.MainContainer}>
             <Route exact path="/auth" render={() => <LoginBody />} />
             <Route exact path="/registration" component={RegistrationBody} />
           </div>

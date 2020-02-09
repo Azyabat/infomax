@@ -1,0 +1,112 @@
+.MainContainer {
+  padding-right: 15px;
+  background-color: #ebf2fb;
+  height: 100vh;
+}
+.Caption {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  color: #404064;
+  padding-top: 24px;
+  padding-bottom: 12px;
+  margin: 0;
+}
+.SaveBtn {
+  width: 100%;
+  border: 0;
+  margin: 0 auto;
+  margin-top: 26px;
+  background: #ffce0c;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 36px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  color: #333333;
+}
+button{
+  cursor: pointer;
+}
+.MainWorkPlace {
+  background: #ffffff;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  padding-top: 24px;
+}
+label {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  display: inline;
+  align-items: center;
+  font-size: 14px;
+  color: #999999;
+  width: 15vw;
+}
+input {
+  width: 35vw;
+  display: block;
+  border: 1px solid black;
+  margin-left: 5vw;
+  background: #ffffff;
+  border: 1px solid #d6dce9;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #6879bb;
+  padding-left: 12px;
+}
+.Rows {
+  height: 36px;
+  margin-bottom: 12px;
+  padding-left: 24px;
+}
+
+hr {
+  margin-top: 36px;
+  margin-bottom: 24px;
+
+  border: 1px solid #d6dce9;
+}
+.ChangePass {
+  margin-top: 26px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  color: #333333;
+  border: 1px solid #6879bb;
+  box-sizing: border-box;
+  border-radius: 4px;
+  color: #6879bb;
+  background-color: white;
+  margin-left: 21vw;
+  width: 15vw;
+  margin-bottom: 36px;
+}
+
+.PublicData {
+  background: rgba(104, 121, 187, 0.1);
+  color: #535374;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  height: 48px;
+}
+.PublicData p {
+  padding: 0;
+  margin: 0;
+  padding-left: 24px;
+  padding-top: 18px;
+}

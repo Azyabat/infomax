@@ -3,6 +3,8 @@ type User {
   username: String!
   email: String!
   password: String!
+  fname: String
+  sname: String
 }
 type Query {
   users: [User!]!

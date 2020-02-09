@@ -1,5 +1,5 @@
 import React from "react";
-import "../Css/StartPage.css";
+import StylesData from "../Css/StartPage.module.css";
 import logo from "../Img/proceset.png";
 import { Container, Row, Col } from "react-grid-system";
 import NavBar from "./NavBar";
@@ -7,9 +7,9 @@ import NavBar from "./NavBar";
 function StartPage() {
   sessionStorage.removeItem("user");
   return (
-    <Container fluid={true} className="MainDivStartPage">
+    <Container fluid={true} className={StylesData.MainDivStartPage}>
       <NavBar />
-      <Row align={"center"} className="RowinStartPage">
+      <Row align={"center"} className={StylesData.RowinStartPage}>
         <Col>
           <img
             src={logo}

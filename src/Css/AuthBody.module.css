@@ -13,4 +13,8 @@
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
 }
-
+.MainDivStartPage {
+  background: linear-gradient(213.53deg, #6879bb 7.06%, #9300bb 95.23%);
+  padding: 0;
+  margin: 0;
+}
